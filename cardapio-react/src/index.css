@@ -253,6 +253,22 @@ section article button {
     margin-right: 1rem;
 }
 
+section .panel {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    padding-block: 1rem;
+}
+
+section .panel-error {
+     border: 1px solid #d20000;
+     color: #d20000;
+
+}
+
+section .panel-loading {
+    color: var(--text-muted);
+}
 
 main aside {
     order: -1;

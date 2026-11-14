@@ -1,6 +1,22 @@
+import { useEffect, useState } from "react";
 import { ProductService } from "../services/product-service";
+import type { Product } from "../dtos/product";
 
 export function useProducts() {
-    return ProductService.listAll();
+
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+
+        ProductService.listAll()
+        .then(setProducts)
+        .catch(e => setError(e.message))
+        .finally(() => setLoading(false));
+    }, [])
+
+
+    return { products, setProducts, loading, setLoading, error, setError };
 
  }
